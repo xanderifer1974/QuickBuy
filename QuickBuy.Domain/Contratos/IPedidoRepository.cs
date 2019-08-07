@@ -2,7 +2,7 @@
 
 namespace QuickBuy.Domain.Contratos
 {
-    interface IPedidoRepository: IBaseRepository<Pedido>
+   public interface IPedidoRepository: IBaseRepository<Pedido>
     {
     }
 }
