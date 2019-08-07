@@ -9,6 +9,9 @@
         public override void Validate()
         {
             LimparMensagemValidacao();
+            if (ProdutoId == 0)
+                AdicionarCritica("Crítica - Não foi identificada a referência do produto");
+
             if (Quantidade == 0 )
             {
                 AdicionarCritica("Crítica - Quantidade deve ser maior que zero");
