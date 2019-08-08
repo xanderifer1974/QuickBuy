@@ -8,7 +8,21 @@ namespace QuickBuy.Repository.Config
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            throw new System.NotImplementedException();
+            builder.HasKey(u => u.Id);
+
+            //Builder utiliza o padrão Fluent
+            builder
+                .Property(p => p.Nome)
+                .IsRequired()
+                .HasMaxLength(50);
+            builder
+               .Property(p => p.Descricao)
+               .IsRequired()
+               .HasMaxLength(200);
+            builder
+                .Property(p => p.Preco)
+                .IsRequired();               
+                     
         }
     }
 }
