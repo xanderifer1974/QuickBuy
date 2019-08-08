@@ -1,7 +1,7 @@
-﻿using JetBrains.Annotations;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using QuickBuy.Domain.Entidades;
 using QuickBuy.Domain.ObjetoValor;
+using QuickBuy.Repository.Config;
 
 namespace QuickBuy.Repository.Context
 {
@@ -20,6 +20,18 @@ namespace QuickBuy.Repository.Context
 
         public QuickBuyContext(DbContextOptions options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            ///Classe de mapeamento aqui...
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
+            modelBuilder.ApplyConfiguration(new PedidoConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
+            modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
+
+            base.OnModelCreating(modelBuilder);
         }
 
 
