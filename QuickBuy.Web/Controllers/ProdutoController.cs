@@ -31,7 +31,11 @@ namespace QuickBuy.Web.Controllers
                 return BadRequest(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Insere um novo produto no banco de dados
+        /// </summary>
+        /// <param name="produto"></param>
+        /// <returns></returns>
         public IActionResult Post([FromBody]Produto produto)
         {
 
