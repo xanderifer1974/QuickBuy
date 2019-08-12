@@ -12,10 +12,10 @@ namespace QuickBuy.Repository.Repositories
         /// </summary>
         protected readonly QuickBuyContext QuickBuyContext;
 
-        public BaseRepository(QuickBuyContext quickBuiContext)
+        public BaseRepository(QuickBuyContext quickBuyContext)
         {
 
-            QuickBuyContext = quickBuiContext;
+            QuickBuyContext = quickBuyContext;
 
         }
 
