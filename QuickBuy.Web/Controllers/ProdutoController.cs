@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QuickBuy.Domain.Contratos;
+using QuickBuy.Domain.Entidades;
+using System;
 
 namespace QuickBuy.Web.Controllers
 {
@@ -10,6 +12,40 @@ namespace QuickBuy.Web.Controllers
         public ProdutoController(IProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
+        }
+
+        /// <summary>
+        /// Retorna todos os Produtos
+        /// </summary>
+        /// <returns></returns>        
+        public IActionResult Get()
+        {
+
+            try
+            {
+
+                return Ok(_produtoRepository.ObterTodos());
+
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        public IActionResult Post([FromBody]Produto produto)
+        {
+
+            try
+            {
+
+                _produtoRepository.Adicionar(produto);
+                return Created("api/produto", produto);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+
         }
     }
 }
