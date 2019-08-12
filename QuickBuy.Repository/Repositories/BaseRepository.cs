@@ -10,43 +10,48 @@ namespace QuickBuy.Repository.Repositories
         /// <summary>
         /// Adicionando a referência a classe dbcontext
         /// </summary>
-        private readonly QuickBuyContext _quickBuyContext;
+        protected readonly QuickBuyContext QuickBuyContext;
 
         public BaseRepository(QuickBuyContext quickBuiContext)
         {
 
-            _quickBuyContext = quickBuiContext;
+            QuickBuyContext = quickBuiContext;
 
         }
 
         public void Adicionar(TEntity entity)
         {
-            _quickBuyContext.Set<TEntity>().Add(entity);
+            QuickBuyContext.Set<TEntity>().Add(entity);
+            QuickBuyContext.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            QuickBuyContext.Set<TEntity>().Update(entity);
+            QuickBuyContext.SaveChanges();
         }       
 
-        public TEntity ObterPorId(int Id)
+        public TEntity ObterPorId(int id)
         {
-            throw new System.NotImplementedException();
+            return QuickBuyContext.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            return _quickBuyContext.Set<TEntity>().ToList();
+            return QuickBuyContext.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            QuickBuyContext.Remove(entity);
+            QuickBuyContext.SaveChanges();
         }
-
+        /// <summary>
+        /// Descarta o objeto de repositório da memória.
+        /// </summary>
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            QuickBuyContext.Dispose();
         }
     }
 }
