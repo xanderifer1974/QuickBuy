@@ -2,6 +2,7 @@
 {
     public class Produto: Entidades
     {
+        public bool ShouldSerializeLazyLoader() { return false; }//Para não trazer lazyloader no json
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
