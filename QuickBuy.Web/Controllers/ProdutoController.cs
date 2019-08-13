@@ -17,13 +17,13 @@ namespace QuickBuy.Web.Controllers
         /// <summary>
         /// Retorna todos os Produtos
         /// </summary>
-        /// <returns></returns>        
+        /// <returns></returns>  
+        [HttpGet]
         public IActionResult Get()
         {
 
             try
             {
-
                 return Ok(_produtoRepository.ObterTodos());
 
             }catch(Exception ex)
@@ -36,6 +36,7 @@ namespace QuickBuy.Web.Controllers
         /// </summary>
         /// <param name="produto"></param>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult Post([FromBody]Produto produto)
         {
 
